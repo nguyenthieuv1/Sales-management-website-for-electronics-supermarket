@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="web/fragments/header :: header"></head>
+<body>
+	<!-- Navigation-->
+	<nav th:replace="web/fragments/navigation :: nav"></nav>
+
+
+
+	<div class="container 100-vh"
+		style="margin-top: 100px; min-height: 600px">
+		<h3 class="text-center">Chi tiết đơn hàng</h3>
+		<table class="table table-bordered table-hover text-center">
+			<thead class="thead-dark">
+				<tr>
+
+					<th>Hình ảnh</th>
+					<th>Tên sản phẩm</th>
+					<th>Giá bán</th>
+					<th>Số lượng</th>
+					<th>Tổng cộng</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="order:${orders}">
+					<td><img th:src="@{${order.product.img}}"
+						style="max-height: 80px; max-width: 100px;"></td>
+					<td th:text="${order.product.name}"></td>
+					<td
+						th:text="${#numbers.formatDecimal(order.price, 1, 'COMMA', 0, 'POINT')}"></td>
+					<td th:text="${order.quantity}"></td>
+					<td
+						th:text="${#numbers.formatDecimal(order.subTotal, 1, 'COMMA', 0, 'POINT')}"></td>
+
+				</tr>
+
+			</tbody>
+		</table>
+		<h4>
+			Tổng tiền: <span
+				th:text="${#numbers.formatDecimal(total, 1, 'COMMA', 0, 'POINT')}+ ' vnd'"></span>
+		</h4>
+
+		<a class="btn btn-danger" id="huy" type="button" th:data-id="${idOrder}">hủy</a>
+		 <a class="btn btn-primary" id="tiepnhan"  type="button">tiếp nhận</a>
+		<a class="btn btn-success" id="hoanthanh"  type="button">hoàn thành</a>
+	</div>
+
+
+
+
+
+	<script
+		th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js}"></script>
+	<!-- Core theme JS-->
+
+
+	<!-- Footer-->
+	<footer th:replace="web/fragments/footer::footer"> </footer>
+	<!-- Bootstrap core JS-->
+	<script th:inline="javascript"
+		th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js}"></script>
+	<!-- Core theme JS-->
+	<script th:src="@{/js/scripts.js}"></script>
+
+	<script th:inline="javascript">
+		$(document).ready(function() {	
+		var id = $("#huy").attr("data-id"); // Sử dụng một thuộc tính dữ liệu để lấy id
+			$("#huy").click(function() {
+				$.ajax({
+					url : "/orders-detail/"+id,
+					type :"put",
+					contentType : "application/json",
+					data: JSON.stringify({status:'canceled'}),
+					success : function(result) {
+						alert('đã hủy')
+						window.location.href = "/new-orders"
+					},
+					error : function(res){
+						alert('thất bại')
+					}
+				});
+			});
+			
+			$("#tiepnhan").click(function() {
+				$.ajax({
+					url : "/orders-detail/"+id,
+					type :"put",
+					contentType : "application/json",
+					data: JSON.stringify({status:'processing'}),
+					success : function(result) {
+						alert('success')
+						window.location.href = "/new-orders"
+					},
+					error : function(res){
+						alert('thất bại')
+					}
+				});
+			});
+			
+			$("#hoanthanh").click(function() {
+				$.ajax({
+					url : "/orders-detail/"+id,
+					type :"put",
+					contentType : "application/json",
+					data: JSON.stringify({status:'done'}),
+					success : function(result) {
+						alert('success')
+						window.location.href = "/new-orders"
+					},
+					error : function(res){
+						alert('thất bại')
+					}
+				});
+			});
+		});
+	</script>
+
+
+</body>
+</html>

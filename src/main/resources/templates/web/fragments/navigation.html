@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+	th:fragment="nav">
+	<div class="container px-4 px-lg-5">
+		<a class="navbar-brand" href="#!">sieuthidienmay.com</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="/home">Trang chủ</a></li>
+				<li class="nav-item"><a class="nav-link" href="#!">Giới
+						thiệu</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">Danh
+						mục sản phẩm</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li th:each="category:${categories}"><a class="dropdown-item"
+							th:href="'/home?categoryid='+${category.id}"
+							th:text="${category.name}">New Arrivals</a></li>
+
+
+
+					</ul></li>
+			</ul>
+
+			<form th:action="@{/home}"
+				class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+				<div class="input-group">
+					<input class="form-control" type="text" placeholder="Tìm kiếm..."
+						aria-label="Search for..." aria-describedby="btnNavbarSearch"
+						name="name" />
+					<button class="btn btn-primary" id="btnNavbarSearch" type="submit">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+			</form>
+
+
+			<form class="d-flex">
+				<a class="btn btn-outline-light" th:href="@{/carts}"> <i
+					class="bi-cart-fill me-1"></i> Giỏ hàng <span
+					class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+				</a>
+			</form>
+
+			<ul class="navbar-nav ms-auto ms-md-0 me-lg-4 ml-4">
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+						class="fas fa-user fa-fw"></i></a>
+					<ul class="dropdown-menu dropdown-menu-end"
+						aria-labelledby="navbarDropdown">
+						<li>
+							<p class="dropdown-item" th:if="${session.user != null}"
+								th:text="${session.user.name != null} ? 'Welcome, ' + ${session.user.name} : 'Welcome, ' + ${session.user.username}">Welcome,</p>
+							<p class="dropdown-item" th:if="${session.user == null}">Welcome,
+								Guest</p>
+
+						</li>
+						<li>
+							<hr class="dropdown-divider" />
+						</li>
+						<li><a class="dropdown-item" href="/login">Đăng nhập</a></li>
+
+						<li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+						<li><a class="dropdown-item" href="/register">Đăng
+								kí</a></li>
+						<li><a class="dropdown-item"
+							href="/user">Thông tin tài khoản</a></li>
+					</ul></li>
+			</ul>
+
+
+		</div>
+	</div>
+</nav>

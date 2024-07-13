@@ -1,0 +1,76 @@
+
+<div id="layoutSidenav_nav" th:fragment="menu">
+	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+		<div class="sb-sidenav-menu">
+			<div class="nav">
+
+				<div class="sb-sidenav-menu-heading">Khách Hàng - Đơn Hàng</div>
+				<a class="nav-link collapsed" href="" data-bs-toggle="collapse"
+					data-bs-target="#collapseLayouts" aria-expanded="false"
+					aria-controls="collapseLayouts">
+					<div class="sb-nav-link-icon">
+						<i class="fa-solid fa-users"></i>
+					</div> Danh sách khách hàng
+					<div class="sb-sidenav-collapse-arrow">
+						<i class="fas fa-angle-down"></i>
+					</div>
+				</a>
+				<div class="collapse" id="collapseLayouts"
+					aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+					<nav class="sb-sidenav-menu-nested nav">
+						<a class="nav-link" href="/accounts">Tài khoản khách
+							hàng</a>
+
+					</nav>
+				</div>
+				<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+					data-bs-target="#collapsePages" aria-expanded="false"
+					aria-controls="collapsePages">
+					<div class="sb-nav-link-icon">
+						<i class="fa-solid fa-cart-shopping"></i>
+					</div> Đơn hàng
+					<div class="sb-sidenav-collapse-arrow">
+						<i class="fas fa-angle-down"></i>
+					</div>
+				</a>
+				<div class="collapse" id="collapsePages"
+					aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+					<nav class="sb-sidenav-menu-nested nav "
+						id="sidenavAccordionPages">
+						
+							
+							<a class="nav-link" th:href="@{/new-orders?status=ordered}">Đơn hàng mới</a>
+							<a class="nav-link" th:href="@{/new-orders?status=processing}">Đơn hàng đang xử lý</a>
+							<a class="nav-link" th:href="@{/new-orders?status=done}">Đơn hàng hoàn thành</a>
+							<a class="nav-link" th:href="@{/new-orders?status=canceled}">Đơn hàng đã hủy</a>
+					</nav>
+				</div>
+				<div class="sb-sidenav-menu-heading">Mặt Hàng</div>
+				<a class="nav-link" th:href="@{/products}">
+					<div class="sb-nav-link-icon">
+						<i class="fas fa-chart-area"></i>
+					</div> Quản lý mặt hàng
+				</a> <a class="nav-link" th:href="@{/add-products}">
+					<div class="sb-nav-link-icon">
+						<i class="fas fa-table"></i>
+					</div> Thêm mặt hàng
+				</a>
+
+				<div class="sb-sidenav-menu-heading">Danh mục</div>
+				<a class="nav-link" href="/categories">
+					<div class="sb-nav-link-icon">
+						<i class="fa-solid fa-list"></i>
+					</div> Danh mục sản phẩm
+				</a> <a class="nav-link" href="/add-category">
+					<div class="sb-nav-link-icon">
+						<i class="fa-solid fa-layer-group"></i>
+					</div> Thêm danh mục
+				</a>
+
+			</div>
+		</div>
+		<div class="sb-sidenav-footer"></div>
+	</nav>
+
+	
+</div>

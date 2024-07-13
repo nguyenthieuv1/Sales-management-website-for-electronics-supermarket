@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/admin/fragments/head::head">
+
+
+</head>
+
+<body class="sb-nav-fixed">
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark"
+		th:replace="/admin/fragments/nav::nav"></nav>
+	<div id="layoutSidenav">
+		<div id="layoutSidenav_nav" th:replace="/admin/fragments/menu::menu">
+		</div>
+		<!-- content -->
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid px-4">
+
+
+
+					<h4 class="text-center mt-3">Chi tiết danh mục</h4>
+
+					<form>
+						<div class="form-group">
+							<label for="usr">Tên danh mục</label> <input type="text"
+								class="form-control" id="name" th:value="${category.name}">
+						</div>
+
+						<button type="button" id="capnhat" class="btn btn-primary"
+							th:data-id="${category.id}">Cập nhật</button>
+						<button type="button" id="xoa" class="btn btn-danger">Xóa</button>
+					</form>
+
+
+
+				</div>
+			</main>
+			<footer class="py-4 bg-light mt-auto">
+				<div class="container-fluid px-4">
+					<div
+						class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted">Copyright &copy; Thieu Nguyen 2024</div>
+						<div>
+							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
+								&amp; Conditions</a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+
+		<!-- /content -->
+	</div>
+	<script
+		th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js}"
+		crossorigin="anonymous"></script>
+
+	<script
+		th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js}"
+		crossorigin="anonymous"></script>
+
+	<script
+		th:src="@{https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js}"
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/datatables-simple-demo.js}"></script>
+
+	<script th:src="@{/js/scripts.js}"></script>
+	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+
+
+
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			var id = $("#capnhat").attr("data-id")
+
+			$("#capnhat").on("click", function(event) {
+				event.preventDefault(); // Chặn sự kiện gửi form mặc định
+
+				var formData = {
+					name : $("#name").val()
+				};
+				//console.log(formData)
+
+				// Gửi dữ liệu bằng AJAX
+				$.ajax({
+					url : "/categories/" + id,
+					type : "put",
+					contentType : "application/json",
+					data : JSON.stringify(formData),
+					success : function(response) {
+						// Xử lý khi gửi thành công
+						if (confirm("thành công")) {
+							window.location.href = "/categories"
+						}
+
+					},
+					error : function(xhr, status, error) {
+						// Xử lý khi có lỗi
+						alert("thất bại: " + error);
+					}
+				});
+			});
+
+			$("#xoa").on("click", function(event) {
+				event.preventDefault(); // Chặn sự kiện gửi form mặc định
+
+				if (confirm("bạn chắc chắn muốn xóa")) {
+					// Gửi dữ liệu bằng AJAX
+					$.ajax({
+						url : "/categories/" + id,
+						type : "delete",
+						contentType : "application/json",
+						data : JSON.stringify({"":""}),
+						success : function(response) {
+							// Xử lý khi gửi thành công
+							if (confirm("thành công")) {
+								window.location.href = "/categories"
+							}
+
+						},
+						error : function(xhr, status, error) {
+							// Xử lý khi có lỗi
+							alert("thất bại: " + error);
+						}
+					});
+				}
+			});
+		});
+	</script>
+
+
+</body>
+
+</html>

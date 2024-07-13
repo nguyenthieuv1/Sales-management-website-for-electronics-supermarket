@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="web/fragments/header :: header"></head>
+<body>
+	<!-- Navigation-->
+
+
+	<nav th:replace="web/fragments/navigation :: nav"></nav>
+
+
+
+
+
+	<div class="container" style="margin-top: 100px; min-height: 600px">
+		<h3 class="text-center mb-">Thông tin khách hàng</h3>
+		
+		
+		<form id="update">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="ten">Tên khách hàng</label> <input type="text"
+							class="form-control" id="ten" name="ten" th:value="${user.name}">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="sdt">Số điện thoại</label> <input type="text"
+							class="form-control" id="sdt" name="sdt" th:value="${user.phone}">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="username">Username</label> <input type="text"
+							class="form-control" id="username" name="username"
+							th:value="${user.username}">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="password">Password</label> <input type="password"
+							class="form-control" id="password" name="password"
+							th:value="${user.password}">
+					</div>
+				</div>
+
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="diachi">Địa chỉ</label> <input type="text"
+							name="diachi" id="diachi" class="form-control"
+							th:value="${user.address}"></input>
+					</div>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-primary mt-4">Cập nhật</button>
+
+		</form>
+		
+		<h4 class="text-center mt-3">Danh sách đơn hàng</h4>
+		<table class="table table-bordered table-hover text-center">
+			<thead class="thead-dark">
+				<tr>
+
+					<th>Ngày đặt</th>
+					<th>trạng thái</th>
+					<th>Xem chi tiết</th>					
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="order:${orders}">
+					
+						<td th:text="${order.orderDate}"></td>
+					<td th:text="${order.status}"></td>
+					<td > <a th:href="@{'/orders/'+${order.id}}">chi tiet</a></td>
+				</tr>
+
+			</tbody>
+		</table>
+		
+
+		
+	</div>
+
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			$("#update").on("submit", function(event) {
+				event.preventDefault(); // Chặn sự kiện gửi form mặc định
+
+				// Thu thập dữ liệu từ form
+				var formData = {
+					name : $("#ten").val(),
+					phone : $("#sdt").val(),
+					username : $("#username").val(),
+					password : $("#password").val(),
+					address : $("#diachi").val()
+				};
+				console.log(formData)
+
+				// Gửi dữ liệu bằng AJAX
+				$.ajax({
+					url : "/user",
+					type : "put",
+					contentType : "application/json",
+					data : JSON.stringify(formData),
+					success : function(response) {
+						// Xử lý khi gửi thành công
+						if (confirm("cập nhật thành công")) {
+							window.location.href = "/login"
+						}
+
+					},
+					error : function(xhr, status, error) {
+						// Xử lý khi có lỗi
+						alert("cập nhật thất bại: " + error);
+					}
+				});
+			});
+		});
+	</script>
+
+
+	<footer th:replace="web/fragments/footer::footer"> </footer>
+	
+
+
+</body>
+</html>
