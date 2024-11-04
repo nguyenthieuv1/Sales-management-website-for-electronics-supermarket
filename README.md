@@ -1,10 +1,14 @@
 Website thương mại điện tử cho cửa hàng kinh doanh đồ điện  
 Các chức năng chính:  
+
+
 User:  
 Login, register,  
 View products in categories,  
 Search products, add products to cart and checkout,  
 View order status, view purchased orders, change their information including: username, password, name, address, phone number,.....  
+
+
 Admin:
 Login,  
 CRUD products and categories of shop,  
