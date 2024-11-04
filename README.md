@@ -31,8 +31,10 @@ danh sách tài khoản khách hàng
 xem danh sách đơn hàng(mới, đang xử lý, hoàn thành, đã hủy)
 ![image](https://github.com/user-attachments/assets/b76bae83-dbf2-4b83-befd-4b66f9e249aa)
 quản lý danh mục sản phẩm
-![Uploading image.png…]()
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/44463c85-965a-4ad2-a10d-eeae08d970ea)
+![image](https://github.com/user-attachments/assets/ef247fd2-ea68-4b07-8109-7c04fd10dc92)
+
+
 
 
 
