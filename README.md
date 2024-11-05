@@ -40,47 +40,50 @@ giỏ hàng
 ![image](https://github.com/user-attachments/assets/871d5417-f211-491c-8e32-b7b312488d0f)
 
 
+
 xem chi tiết mặt hàng
 ![image](https://github.com/user-attachments/assets/1fc0e5d4-d7d8-4e03-8a5a-8456adf1e877)
 
 
 
-xem chi tiết sản phẩm
+giỏ hàng khi có sản phẩm
 ![image](https://github.com/user-attachments/assets/b428cd42-ea97-48b3-9015-09dcf875d1f8)
+
+Đặt hàng
 ![image](https://github.com/user-attachments/assets/d203e396-9e81-4e56-8fa9-67fe6157716d)
 
-
  
-Đặt hàng
+thông tin khách hàng
 ![image](https://github.com/user-attachments/assets/e8fdeb8b-c555-4385-90ed-31fff85ca526)
 
 
-thông tin khách hàng
+chi tiết đơn hàng
 ![image](https://github.com/user-attachments/assets/f32e3c39-cda5-4fd1-bc3b-dd128e6a6b8f)
 
 
-chi tiết đơn hàng
+Đăng kí tài khoản
 ![image](https://github.com/user-attachments/assets/13e03ff4-686d-4af0-862a-3b626e9f1960)
 
 
-Đăng kí tài khoản
+giao diện admin
 ![image](https://github.com/user-attachments/assets/65abc814-2603-4af5-bdec-903dc775cac1)
 
 
-giao diện admin
+cập nhật thông tin sản phẩm
 ![image](https://github.com/user-attachments/assets/f35364fd-91a7-455b-be58-b9a32f56380d)
 
 
-cập nhật thông tin sản phẩm
+danh sách tài khoản khách hàng
 ![image](https://github.com/user-attachments/assets/fdc2fee2-958c-476a-b449-f1786f4b4e22)
 
-
-danh sách tài khoản khách hàng
-![image](https://github.com/user-attachments/assets/e60ea333-136c-4258-b7b2-bdfe881690ec)
 ![image](https://github.com/user-attachments/assets/d4e62890-efce-4f26-a255-74404cb85be7)
 
 xem danh sách đơn hàng(mới, đang xử lý, hoàn thành, đã hủy)
-![image](https://github.com/user-attachments/assets/b76bae83-dbf2-4b83-befd-4b66f9e249aa)
+![image](https://github.com/user-attachments/assets/18c52a76-e204-4fce-b77b-1d3cf3eb5696)
+![image](https://github.com/user-attachments/assets/21be46ac-bf49-4750-85cc-671ba4352eac)
+![image](https://github.com/user-attachments/assets/cb89150f-d925-4ac3-98c6-5cd4c3665258)
+
+
 
 
 quản lý danh mục sản phẩm
